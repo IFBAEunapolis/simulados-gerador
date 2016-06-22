@@ -1,0 +1,8 @@
+*.pdf
+*.aux
+*.csv
+*.dvi
+*.log
+tags
+files/*
+data/*
