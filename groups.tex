@@ -1,4 +1,4 @@
-%Engine usada pelo AMC
+% Engine usada pelo AMC
 %%AMC:latex_engine=lualatex
 
 \documentclass[a4paper,twoside]{article}
@@ -9,19 +9,33 @@
 \usepackage{luacode}
 \usepackage{import}
 
-% 
-\import{Atividades/}{config}
+% Importa as configurações da prova
+\input{Prova/config}
 
 \begin{luacode}
 function splitgroup(disciplinas)
-	for disc in string.gmatch(disciplinas, '[^;]+') do
-		local fileHandler = io.open("Atividades/" .. disc .. ".tex","r")
+	for disc in string.gmatch(disciplinas, '[^;]+') do -- Divide a string de disciplinas por ";" e faz um loop entre elas
+		local fileHandler = io.open("Prova/Questoes/" .. disc .. ".tex","r") -- Verifica se o arquivo da disciplina existe
 		if fileHandler then
 			fileHandler:close()
+			-- Caso o arquivo exista chama as funções do AMC "shufflegroup" e "insertgroup" nas questões
 			tex.print("\\shufflegroup{" .. disc .. "}")
 			tex.print("\\insertgroup{" .. disc .. "}")
 		end
-	end	
+	end
+end
+
+function includedir(dir)
+   local lfs = require("lfs") -- Necessita do pacote Lfs - Lua File System
+   for filename in lfs.dir(dir) do -- Para cada arquivo da pasta ..
+     if filename ~= "." and filename ~= ".." and filename:match("^.+(%..+)$") == ".tex" then -- O arquivo só é válido se não for uma pasta e tiver a extensão .tex
+     tex.print("\\include{" .. dir .. getfilename( filename ) .. "}") -- Include do tex no arquivo .tex
+     end
+   end
+end
+
+function getfilename(url)
+  return url:match "(.+)%..+"
 end
 \end{luacode}
 \def\AMCbeginQuestion#1#2{\par\noindent{\bf #1 )} #2\hspace*{1pt}}
@@ -29,24 +43,20 @@ end
 \newcommand{\subject}{
 	\onecopy{1}{  
 		\noindent
-		\input{Atividades/cabecalho}
-		\input{Atividades/orientacoes}
+		\input{Prova/cabecalho}
+		\input{Prova/orientacoes}
 		\vfill
 
 		\directlua{splitgroup("\disciplinas")}
   
 	    \AMCassociation{\id}
 	    \cleardoublepage
-	    
-	    % Foreach da quantidade de disciplinas
 	}
 
 }
-%%% preparation of the groups
-\include{Atividades/POO001}
-\include{Atividades/ILP001}
-\include{Atividades/POO002}
-% \include{Atividades/lista}
+
+% Inserção de questões na prova
+\directlua{includedir("Prova/Questoes/")}
 \renewcommand{\lstlistingname}{}
 
 \begin{document}
