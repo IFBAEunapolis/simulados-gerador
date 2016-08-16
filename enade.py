@@ -26,13 +26,10 @@ class Disciplina(object):
 
     """Docstring for Disciplina. """
 
-    def __init__(self, codigo, nome, ano, semestre, conceito):
+    def __init__(self, codigo, nome):
         """TODO: to be defined1. """
         self.codigo = codigo
         self.nome = nome
-        self.ano = ano
-        self.semestre = semestre
-        self.conceito = conceito
 
 alunos = []
 
@@ -43,30 +40,32 @@ def find_aluno(matricula):
 
     return (False, None)
 
-with open('Disciplinas aprovadas.csv', 'rt') as csvfile:
+with open('names.csv', 'rt') as csvfile:
     reader = csv.DictReader(csvfile)
     for row in reader:
 
-        disciplina = Disciplina(row['CODIGO DISCIPLINA'], row['NOME DISCIPLINA'], row['ANO'], row['SEMESTRE'], row['CONCEITO'])
+        disciplina = Disciplina(row['CÓDIGO DA DISCIPLINA'].strip(), row['NOME DA DISCIPLINA'])
 
-        # Encontrar aluno
-        encontrado, index = find_aluno(row['MATRÍCULA'])
+        if row['MATRÍCULA']:
+            ultimo_aluno = row['MATRÍCULA']
 
-        if encontrado:
-            alunos[index].add_disciplina(disciplina)
-        else:
             novo_aluno = Aluno(row['NOME'], row['MATRÍCULA'])
             novo_aluno.add_disciplina(disciplina)
             alunos.append(novo_aluno)
+        else:
+            # Encontrar aluno
+            encontrado, index = find_aluno(ultimo_aluno)
+
+            if encontrado:
+                alunos[index].add_disciplina(disciplina)
 
 # Salvar alunos no arquivo 'names.csv'
-with open('names.csv', 'w') as csvfile:
-    fieldnames = ['name', 'disciplinas']
+with open('alunos.csv', 'w') as csvfile:
+    fieldnames = ['id', 'name', 'disciplinas']
     writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
 
     writer.writeheader()
 
     for aluno in alunos:
-        print(aluno.get_format_disciplinas())
-        writer.writerow({'name': aluno.nome.title(), 'disciplinas':
+        writer.writerow({'id': aluno.matricula, 'name': aluno.nome.title(), 'disciplinas':
                          aluno.get_format_disciplinas()})
