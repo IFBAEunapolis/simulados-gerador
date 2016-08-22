@@ -15,6 +15,7 @@ class Aluno(object):
         """ Método para adicionar disciplinas ao aluno """
         self.disciplinas.append(disciplina)
 
+
     def get_format_disciplinas(self):
         disciplinas_str = ''
         for disc in self.disciplinas:
@@ -43,7 +44,6 @@ def find_aluno(matricula):
 with open('names.csv', 'rt') as csvfile:
     reader = csv.DictReader(csvfile)
     for row in reader:
-
         disciplina = Disciplina(row['CÓDIGO DA DISCIPLINA'].strip(), row['NOME DA DISCIPLINA'])
 
         if row['MATRÍCULA']:
