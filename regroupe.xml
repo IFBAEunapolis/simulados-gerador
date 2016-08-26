@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<arguments>
+  <arg>--id-file</arg>
+  <arg></arg>
+  <arg>--compose</arg>
+  <arg>--projet</arg>
+  <arg>./</arg>
+  <arg>--sujet</arg>
+  <arg>DOC-sujet.pdf</arg>
+  <arg>--data</arg>
+  <arg>data</arg>
+  <arg>--tex-src</arg>
+  <arg>groups.tex</arg>
+  <arg>--with</arg>
+  <arg>lualatex</arg>
+  <arg>--filter</arg>
+  <arg>latex</arg>
+  <arg>--filtered-source</arg>
+  <arg>DOC-filtered.tex</arg>
+  <arg>--n-copies</arg>
+  <arg>1</arg>
+  <arg>--progression-id</arg>
+  <arg>regroupe</arg>
+  <arg>--progression</arg>
+  <arg>1</arg>
+  <arg>--modele</arg>
+  <arg></arg>
+  <arg>--fich-noms</arg>
+  <arg>arquivos/alunos.csv</arg>
+  <arg>--noms-encodage</arg>
+  <arg>UTF-8</arg>
+  <arg>--csv-build-name</arg>
+  <arg>(nom|surname) (prenom|name)</arg>
+  <arg>--single-output</arg>
+  <arg>All_students.pdf</arg>
+  <arg>--sort</arg>
+  <arg>n</arg>
+  <arg>--register</arg>
+  <arg>--no-force-ascii</arg>
+</arguments>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<arguments>
+  <arg>--progression-id</arg>
+  <arg>annote</arg>
+  <arg>--progression</arg>
+  <arg>1</arg>
+  <arg>--projet</arg>
+  <arg>./</arg>
+  <arg>--projets</arg>
+  <arg></arg>
+  <arg>--ch-sign</arg>
+  <arg>4</arg>
+  <arg>--cr</arg>
+  <arg>cr</arg>
+  <arg>--data</arg>
+  <arg>data</arg>
+  <arg>--id-file</arg>
+  <arg></arg>
+  <arg>--taille-max</arg>
+  <arg>1000x1500</arg>
+  <arg>--qualite</arg>
+  <arg>100</arg>
+  <arg>--line-width</arg>
+  <arg>2</arg>
+  <arg>--indicatives</arg>
+  <arg></arg>
+  <arg>--symbols</arg>
+  <arg>0-0:none/#000000000000,0-1:circle/#ffff00000000,1-0:mark/#ffff00000000,1-1:mark/#00000000ffff</arg>
+  <arg>--position</arg>
+  <arg>marges</arg>
+  <arg>--pointsize-nl</arg>
+  <arg>60</arg>
+  <arg>--ecart</arg>
+  <arg>5.5</arg>
+  <arg>--verdict</arg>
+  <arg>%(ID)
+Mark: %s/%m (total score: %S/%M)</arg>
+  <arg>--verdict-question</arg>
+  <arg>"%s/%m"</arg>
+  <arg>--fich-noms</arg>
+  <arg>arquivos/alunos.csv</arg>
+  <arg>--noms-encodage</arg>
+  <arg>UTF-8</arg>
+  <arg>--csv-build-name</arg>
+  <arg>(nom|surname) (prenom|name)</arg>
+  <arg>--no-rtl</arg>
+  <arg>--changes-only</arg>
+</arguments>
