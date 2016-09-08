@@ -59,7 +59,7 @@ with open('names.csv', 'rt') as csvfile:
             if encontrado:
                 alunos[index].add_disciplina(disciplina)
 
-# Salvar alunos no arquivo 'names.csv'
+# Salvar alunos no arquivo 'alunos.csv'
 with open('alunos.csv', 'w') as csvfile:
     fieldnames = ['id', 'name', 'disciplinas']
     writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
