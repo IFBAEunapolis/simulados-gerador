@@ -1,4 +1,5 @@
-#!/usr/bin/python3
+#!/usr/bin/python2
+# -*- coding: iso-8859-15 -*-
 
 import csv
 
