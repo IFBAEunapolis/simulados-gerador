@@ -41,7 +41,7 @@ def find_aluno(matricula):
 
     return (False, None)
 
-with open('names.csv', 'rt') as csvfile:
+with open('arquivos/alunos.csv', 'rt') as csvfile:
     reader = csv.DictReader(csvfile)
     for row in reader:
         disciplina = Disciplina(row['CÓDIGO DA DISCIPLINA'].strip(), row['NOME DA DISCIPLINA'])
@@ -60,7 +60,7 @@ with open('names.csv', 'rt') as csvfile:
                 alunos[index].add_disciplina(disciplina)
 
 # Salvar alunos no arquivo 'alunos.csv'
-with open('alunos.csv', 'w') as csvfile:
+with open('arquivos/alunos.csv', 'w') as csvfile:
     fieldnames = ['id', 'name', 'disciplinas']
     writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
 
