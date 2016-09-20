@@ -68,5 +68,5 @@ with open('arquivos/alunos.csv', 'w') as csvfile:
     writer.writeheader()
 
     for aluno in alunos:
-        writer.writerow({'id': aluno.matricula, 'name': aluno.nome.title(), 'disciplinas':
+        writer.writerow({'id': aluno.matricula, 'name': aluno.nome, 'disciplinas':
                          aluno.get_format_disciplinas()})

@@ -2,15 +2,13 @@
 %%AMC:latex_engine=lualatex
 
 \documentclass[a4paper,twoside]{article}
-\usepackage{multiplechoiceifba}
+\usepackage{Prova/ModeloIFBA}
+\usepackage[box,completemulti]{automultiplechoice}    
 \usepackage{pgffor}
 \usepackage{csvsimple}
 \usepackage{etoolbox}
 \usepackage{luacode}
 \usepackage{import}
-
-% Importa as configurações da prova
-\input{Prova/config}
 
 \begin{luacode}
 function splitgroup(disciplinas)
@@ -38,16 +36,21 @@ function getfilename(url)
   return url:match "(.+)%..+"
 end
 \end{luacode}
+
+% Importa as configurações da prova
+\input{Prova/config}
+
 \def\AMCbeginQuestion#1#2{\par\noindent{\bf #1 )} #2\hspace*{1pt}}
-\newcommand{\duracao}{140 minutos}
+
 \newcommand{\subject}{
 	\onecopy{1}{  
 		\noindent
 		\input{Prova/cabecalho}
 		\input{Prova/orientacoes}
 		\vfill
-
+		\input{Prova/prequestoes}
 		\directlua{splitgroup("\disciplinas")}
+		\input{Prova/posquestoes}
   
 	    \AMCassociation{\id}
 	    \cleardoublepage
@@ -57,6 +60,7 @@ end
 
 % Inserção de questões na prova
 \directlua{includedir("Prova/Questoes/")}
+
 \renewcommand{\lstlistingname}{}
 
 \begin{document}
