@@ -28,7 +28,7 @@ auto-multiple-choice analyse \
 
 # prepare
 auto-multiple-choice prepare \
-  --n-copies 3 \
+  --n-copies 1 \
   --with lualatex \
   --filter latex \
   --filtered-source DOC-filtered.tex \
@@ -43,7 +43,7 @@ auto-multiple-choice note \
   --seuil 0.15 \
   --grain 0.5 \
   --arrondi inf \
-  --notemax 20 \
+  --notemax 10 \
   --plafond \
   --notemin "" \
   --postcorrect-student "" \
@@ -70,6 +70,6 @@ auto-multiple-choice regroupe --xmlargs regroupe.xml
 # export
 auto-multiple-choice export \
   --data data \
-  --module csv \
+  --module CSV \
   --fich-noms arquivos/alunos.csv \
   --o exports/resultados.csv
