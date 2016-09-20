@@ -1,0 +1,194 @@
+\NeedsTeXFormat{LaTeX2e}[1994/06/01]
+\ProvidesPackage{ModeloIFBA}[]
+\RequirePackage[utf8]{inputenc}
+\RequirePackage[brazilian]{babel}
+\RequirePackage[T1]{fontenc}
+\RequirePackage{lmodern}
+\RequirePackage{graphicx}
+\RequirePackage{amsmath,amssymb}
+\RequirePackage{indentfirst}
+\RequirePackage{url}
+\RequirePackage{multirow}
+\setlength{\columnsep}{1cm}
+\RequirePackage{multicol}
+\RequirePackage{booktabs} 
+\RequirePackage{multirow}
+\RequirePackage{tabularx}
+\RequirePackage{enumerate}
+\RequirePackage[ddmmyyyy]{datetime}
+\RequirePackage[top=1in, bottom=.8in, left=.5in, right=.5in,a4paper]{geometry}
+
+\RequirePackage{datatool}
+
+\RequirePackage{tikz}
+\usetikzlibrary{shapes.geometric,arrows,shadows,shadows.blur,shapes,positioning}
+\RequirePackage{float}
+\floatstyle{ruled}
+\newfloat{program}{thp}{lop}
+\floatname{program}{Programa}
+
+
+
+
+\pagestyle{headandfoot}
+
+\newcommand{\ifbalogo}[2][1]{
+	\resizebox {#2} {!} {
+		\begin{tikzpicture}
+			
+			\tikzstyle{n1} = [rectangle, rounded corners, minimum width=3cm, minimum height=3cm,text centered, draw=black, fill=olive!80,opacity=#1, blur shadow = {opacity=#1,shadow xshift=2ex,shadow yshift=-2ex}]
+			\tikzstyle{n2} = [ellipse, minimum width=3cm, minimum height=3cm, text centered, draw=black, fill=red!80,opacity=#1, blur shadow = {opacity=#1,shadow xshift=2ex,shadow yshift=-2ex}]
+
+			\node (i0) [n2] {};
+			\node (i1) [n1, right=of i0] {};
+			\node (i2) [n1, right=of i1] {};
+			
+			\node (i3) [n1, below=of i0] {};
+			\node (i4) [n1, right=of i3] {};
+
+			\node (i5) [n1, below=of i3] {};
+			\node (i6) [n1, right=of i5] {};
+			\node (i7) [n1, right=of i6] {};
+
+			\node (i8) [n1, below=of i5] {};
+			\node (i9) [n1, right=of i8] {};
+			
+			\node (tx) [right=of i7,text width=30cm,font=\fontsize{60}{60}\selectfont] { \textbf{INSTITUTO FEDERAL DE EDUCAÇÃO, CIÊNCIA  E TECNOLOGIA DA BAHIA}};
+			
+			\node (c) [right=of i9,minimum width=3cm]{};
+			\node (tx2) [right=of c,text width=30cm,font=\fontsize{50}{50}\selectfont,color=olive] {\textbf{Campus Eunápolis}};
+		\end{tikzpicture}
+	}
+
+}
+
+
+%formatação de exibição do codigo
+\usepackage{listings}
+\usepackage{xcolor}
+\lstset{
+    language=C, % Troque para PHP, C, Java, etc... bash é o padrão
+    basicstyle=\ttfamily\small,
+    numberstyle=\footnotesize,
+    numbers=left,
+    backgroundcolor=\color{gray!10},
+    frame=single,
+    tabsize=2,
+    rulecolor=\color{black!30},
+    %title=\lstname,
+    escapeinside={\%*}{*)},
+    breaklines=true,
+    breakatwhitespace=true,
+    framextopmargin=2pt,
+    framexbottommargin=2pt,
+    inputencoding=utf8,
+    extendedchars=true,
+   literate=%
+        {é}{{\'{e}}}1
+        {è}{{\`{e}}}1
+        {ê}{{\^{e}}}1
+        {ë}{{\¨{e}}}1
+        {É}{{\'{E}}}1
+        {Ê}{{\^{E}}}1
+        {û}{{\^{u}}}1
+        {ù}{{\`{u}}}1
+        {â}{{\^{a}}}1
+        {à}{{\`{a}}}1
+        {á}{{\'{a}}}1
+        {ã}{{\~{a}}}1
+        {Á}{{\'{A}}}1
+        {Â}{{\^{A}}}1
+        {Ã}{{\~{A}}}1
+        {ç}{{\c{c}}}1
+        {Ç}{{\c{C}}}1
+        {õ}{{\~{o}}}1
+        {ó}{{\'{o}}}1
+        {ô}{{\^{o}}}1
+        {Õ}{{\~{O}}}1
+        {Ó}{{\'{O}}}1
+        {Ô}{{\^{O}}}1
+        {î}{{\^{i}}}1
+        {Î}{{\^{I}}}1
+        {í}{{\'{i}}}1
+        {Í}{{\~{Í}}}1
+}
+
+% Define Language
+\lstdefinelanguage{portugol}
+{
+  % list of keywords
+  morekeywords={
+    aleatorio,
+    algoritmo,
+    arquivo,
+    ate,
+    caractere,
+    caso,
+    cronometro,
+    debug,
+    e,
+    eco,
+    enquanto,
+    entao,
+    escolha,
+    escreva,
+    escreval,
+    faca,
+    falso,
+    fimalgoritmo,
+    fimenquanto,
+    fimescolha,
+    fimfuncao,
+    fimpara,
+    fimprocedimento,
+    fimrepita,
+    fimse,
+    funcao,
+    inicio,
+    int,
+    inteiro,
+    interrompa,
+    leia,
+    limpatela,
+    logico,
+    mod,
+    nao,
+    ou,
+    outrocaso,
+    para,
+    passo,
+    pausa, 
+    real,
+    procedimento,
+    repita,
+    retorne,
+    se,
+    senao,
+    timer,
+    var, 
+    vetor,
+    verdadeiro,
+    xou
+  },
+  sensitive=false, % keywords are not case-sensitive
+  morecomment=[l]{//}, % l is for line comment
+  morecomment=[s]{/*}{*/}, % s is for start and end delimiter
+  morestring=[b]" % defines that strings are enclosed in double quotes
+}
+
+%Elementos do Fluxograma
+\tikzstyle{startstop} = [ultra thick,rectangle, rounded corners, minimum width=3cm, minimum height=1cm,text centered, draw=black, fill=red!30]
+\tikzstyle{inputFlux} = [ultra thick,trapezium, trapezium left angle=70, trapezium right angle=110, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=blue!30]
+
+\tikzstyle{outputFlux} = [ultra thick, inner xsep=10pt, minimum width=3cm, text centered, minimum height=1cm,output fill=blue!30]
+\tikzset{output fill/.style={append after command={
+    \pgfextra
+        \draw[sharp corners, fill=#1] ([xshift=-0.3cm]\tikzlastnode.north east) -- ([xshift=0.5cm]\tikzlastnode.north west) -- (\tikzlastnode.west) -- ([xshift=0.5cm]\tikzlastnode.south west) -- ([xshift=-0.3cm]\tikzlastnode.south east) .. controls ([xshift=0.1cm]\tikzlastnode.east) .. ([xshift=-0.3cm]\tikzlastnode.north east);
+    \endpgfextra}}}
+
+\tikzstyle{process} = [ultra thick,rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=orange!30]
+\tikzstyle{decision} = [ultra thick,diamond, minimum width=1cm, minimum height=1cm, text centered, draw=black, fill=green!30]
+\tikzstyle{conector} = [ultra thick,ellipse, minimum width=0.3cm, minimum height=0.3cm,inner sep=0pt, draw=black, fill=black]
+\tikzstyle{loop} = [ultra thick,regular polygon, regular polygon sides=6,inner sep=0pt, draw=black, inner sep=0,fill=yellow!30]
+\tikzstyle{arrow} = [thick,->,>=stealth]
+%FIM Elementos do Fluxograma
