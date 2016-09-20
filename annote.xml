@@ -35,7 +35,7 @@
   <arg>5.5</arg>
   <arg>--verdict</arg>
   <arg>%(ID)
-Mark: %s/%m (total score: %S/%M)</arg>
+Nota: %s/%m (pontuação total: %S/%M)</arg>
   <arg>--verdict-question</arg>
   <arg>"%s/%m"</arg>
   <arg>--fich-noms</arg>
