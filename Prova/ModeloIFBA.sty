@@ -6,6 +6,11 @@
 \RequirePackage{lmodern}
 \RequirePackage{graphicx}
 \RequirePackage{amsmath,amssymb}
+\RequirePackage{textcomp}
+\RequirePackage{framed}
+\RequirePackage{caption}
+\RequirePackage{subcaption}
+\RequirePackage{lineno}
 \RequirePackage{indentfirst}
 \RequirePackage{url}
 \RequirePackage{multirow}
@@ -22,6 +27,7 @@
 
 \RequirePackage{tikz}
 \usetikzlibrary{shapes.geometric,arrows,shadows,shadows.blur,shapes,positioning}
+\RequirePackage{Prova/tikz-uml}
 \RequirePackage{float}
 \floatstyle{ruled}
 \newfloat{program}{thp}{lop}
@@ -68,8 +74,8 @@
 \usepackage{xcolor}
 \lstset{
     language=C, % Troque para PHP, C, Java, etc... bash é o padrão
-    basicstyle=\ttfamily\small,
-    numberstyle=\footnotesize,
+    basicstyle=\ttfamily\scriptsize,
+    numberstyle=\tiny,
     numbers=left,
     backgroundcolor=\color{gray!10},
     frame=single,
@@ -192,3 +198,7 @@
 \tikzstyle{loop} = [ultra thick,regular polygon, regular polygon sides=6,inner sep=0pt, draw=black, inner sep=0,fill=yellow!30]
 \tikzstyle{arrow} = [thick,->,>=stealth]
 %FIM Elementos do Fluxograma
+
+\setlength{\abovecaptionskip}{2pt}
+
+\newenvironment{monospace}{\ttfamily}{\par}

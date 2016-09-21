@@ -1,7 +1,7 @@
 % Engine usada pelo AMC
 %%AMC:latex_engine=lualatex
 
-\documentclass[a4paper,twoside]{article}
+\documentclass[a4paper,twoside,8pt]{extarticle}
 \usepackage{Prova/ModeloIFBA}
 \usepackage[box,completemulti]{automultiplechoice}    
 \usepackage{pgffor}
@@ -10,6 +10,7 @@
 \usepackage{luacode}
 \usepackage{import}
 
+
 \begin{luacode}
 function splitgroup(disciplinas)
 	for disc in string.gmatch(disciplinas, '[^;]+') do -- Divide a string de disciplinas por ";" e faz um loop entre elas
@@ -17,8 +18,9 @@ function splitgroup(disciplinas)
 		if fileHandler then
 			fileHandler:close()
 			-- Caso o arquivo exista chama as funções do AMC "shufflegroup" e "insertgroup" nas questões
+			tex.print("\\groupline{" .. disc .. "}")
 			tex.print("\\shufflegroup{" .. disc .. "}")
-			tex.print("\\insertgroup{" .. disc .. "}")
+			tex.print("\\insertgroup[5]{" .. disc .. "}")
 		end
 	end
 end
@@ -39,6 +41,9 @@ end
 
 % Importa as configurações da prova
 \input{Prova/config}
+
+\def\groupline#1{\hbox to \hsize{\hrulefill\quad\lower.3em\hbox{#1}\quad\hrulefill}}
+
 
 \def\AMCbeginQuestion#1#2{\par\noindent{\bf #1 )} #2\hspace*{1pt}}
 
