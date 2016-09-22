@@ -20,7 +20,7 @@ function splitgroup(disciplinas)
 			-- Caso o arquivo exista chama as funções do AMC "shufflegroup" e "insertgroup" nas questões
 			tex.print("\\groupline{" .. disc .. "}")
 			tex.print("\\shufflegroup{" .. disc .. "}")
-			tex.print("\\insertgroup[5]{" .. disc .. "}")
+			tex.print("\\insertgroup{" .. disc .. "}")
 		end
 	end
 end
