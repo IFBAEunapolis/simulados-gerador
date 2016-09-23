@@ -19,6 +19,9 @@ if command -v auto-multiple-choice >/dev/null 2>&1; then
     --out-corrige "$FOLDER/DOC-corrige.pdf" \
     --out-catalog "$FOLDER/DOC-catalog.pdf" \
     --out-calage "$FOLDER/DOC-calage.xy" \
+    --n-copies 1 "$FOLDER/groups.tex" \
+    --prefix "$FOLDER" \
+    --latex-stdout "$FOLDER/groups.tex" \
     "$FOLDER/groups.tex"
 
   auto-multiple-choice prepare \
