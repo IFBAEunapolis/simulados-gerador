@@ -18,7 +18,6 @@ function splitgroup(disciplinas)
 		if fileHandler then
 			fileHandler:close()
 			-- Caso o arquivo exista chama as funções do AMC "shufflegroup" e "insertgroup" nas questões
-			tex.print("\\groupline{" .. disc .. "}")
 			tex.print("\\shufflegroup{" .. disc .. "}")
 			tex.print("\\insertgroup{" .. disc .. "}")
 		end
